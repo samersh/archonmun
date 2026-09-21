@@ -433,7 +433,11 @@ function initNav() {
   const toggle = $('#navToggle');
   const links = $('.nav-links');
 
-  const onScroll = () => nav.classList.toggle('is-stuck', scrollY > 40);
+  // the nav only goes transparent over the hero's dark ground. A page
+  // without one (the roster) keeps its solid background, or cream type
+  // would sit on a cream page and disappear.
+  const overHero = !!$('.hero');
+  const onScroll = () => nav.classList.toggle('is-stuck', !overHero || scrollY > 40);
   onScroll();
   addEventListener('scroll', onScroll, { passive: true });
 
@@ -442,7 +446,7 @@ function initNav() {
     toggle.setAttribute('aria-expanded', String(!open));
     toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
     links.classList.toggle('is-open', !open);
-    nav.classList.toggle('is-stuck', !open || scrollY > 40);
+    nav.classList.toggle('is-stuck', !overHero || !open || scrollY > 40);
   });
   links.addEventListener('click', e => {
     if (e.target.closest('a')) {

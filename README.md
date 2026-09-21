@@ -218,22 +218,9 @@ main thing making them hard to read.
 Live from GitHub Pages, `main` branch, repo root. Pushing to `main` redeploys;
 a build takes about a minute.
 
-Currently served at **https://samersh.github.io/archonmun/**.
+Live at **https://arcmun.online**.
 
-### Moving to arcmun.online
-
-The domain was registered but its DNS was not yet resolving at deploy time,
-and a custom domain on Pages redirects the github.io address to it, so
-setting it early would have taken the site offline. To switch once DNS is up:
-
-1. At the registrar for `arcmun.online`, add four A records on the apex:
-   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   and, for IPv6, four AAAA records: `2606:50c0:8000::153`,
-   `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
-2. Add a CNAME record for `www` pointing at `samersh.github.io`.
-3. Once `dig +short arcmun.online` returns those IPs, add a file named
-   `CNAME` at the repo root containing `arcmun.online`, and push.
-4. In the repo's Settings, Pages, tick "Enforce HTTPS" after the certificate
-   is issued, which takes a few minutes.
-5. Change `og:url` and `og:image` in `index.html` back to the arcmun.online
-   origin, and `CONFIG.domain` in `js/main.js` is already set to it.
+The apex is pointed at GitHub Pages from Porkbun: four A records and four
+AAAA records on the root, plus a CNAME on `www` to `samersh.github.io`. The
+`CNAME` file at the repo root is what tells Pages to answer for the domain,
+so do not delete it.

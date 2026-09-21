@@ -451,9 +451,17 @@ function initNav() {
     }
   });
 
+  // only in-page anchors take part in the scrollspy. Any other href, an
+  // external form or a link to another page, would reach querySelector as a
+  // selector and throw, taking the rest of the nav setup down with it.
   const sections = $$('.nav-links a')
-    .map(a => ({ a, el: $(a.getAttribute('href')) }))
-    .filter(s => s.el);
+    .map(a => {
+      const href = a.getAttribute('href') || '';
+      return href.startsWith('#') && href.length > 1
+        ? { a, el: $(href) }
+        : null;
+    })
+    .filter(s => s && s.el);
   if (!sections.length) return;
   const spy = new IntersectionObserver(entries => {
     entries.forEach(en => {

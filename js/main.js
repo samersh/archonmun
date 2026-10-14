@@ -273,7 +273,6 @@ function renderCommittees() {
     const topics = c.topics.map((t, j) => `
       <article class="topic">
         <span class="topic-head">
-          <svg class="topic-motif" viewBox="0 0 48 48" aria-hidden="true"><use href="#${t.i || 'i-fault'}"/></svg>
           <span class="topic-i">Topic ${ROMAN[j]}</span>
         </span>
         <h4>${esc(t.t)}</h4>

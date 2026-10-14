@@ -423,7 +423,7 @@ function initCountdown() {
   const tick = () => {
     let d = target - Date.now();
     if (d <= 0) {
-      host.innerHTML = '<p class="countdown-live">The floor is open.</p>';
+      host.innerHTML = '<span></span><b class="countdown-live">The floor is open.</b>';
       clearInterval(timer);
       return;
     }

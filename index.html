@@ -17,8 +17,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=35">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=41">
 </head>
 <body>
 
@@ -92,10 +92,11 @@
 
 <!-- ══ HERO ═════════════════════════════════════════════════════════ -->
 <header class="hero" id="top">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-key meander is-top" aria-hidden="true"></div>
-  <div class="hero-key meander is-bottom" aria-hidden="true"></div>
-  
+  <div class="hero-amb" aria-hidden="true"></div>
+  <div class="hero-arch" aria-hidden="true"></div>
+
+  <p class="spine" aria-hidden="true">Archon Model United Nations</p>
+  <p class="spine spine-r" aria-hidden="true">Ramallah &#183; MMXXVI</p>
 
   <div class="hero-inner">
     <div class="hero-mark">
@@ -104,9 +105,7 @@
       <div class="hero-stage" id="heroStage" data-src="assets/logo.png" aria-hidden="true"></div>
     </div>
 
-    <p class="eyebrow">
-      <span>Ramallah</span><i>&#9670;</i><span>5 to 7 November 2026</span><i>&#9670;</i><span>Hosted at Bank Al Quds</span>
-    </p>
+    <p class="eyebrow">Model United Nations &#183; Fifth Edition</p>
 
     <h1 class="hero-title">
       <span class="hl">Rewrite</span>
@@ -119,36 +118,17 @@
     </h1>
     <span class="sr-only">Rewrite the system.</span>
 
-    <p class="hero-lead">For centuries the tables of power have been set by the few and denied
-      to the many. We do not ask for a seat at the table. We rewrite it.</p>
+    <a class="btn-line" href="#" data-register-link>Register now</a>
+  </div>
 
-    <div class="hero-cta">
-      <a class="btn btn-gold" href="#" data-register-link>Register now</a>
-      <a class="btn btn-ghost" href="#committees">See the five committees</a>
+  <div class="hero-rail">
+    <div><span>Dates</span><b data-event-dates>5 to 7 November 2026</b></div>
+    <div><span>City</span><b>Ramallah</b></div>
+    <div><span>Host</span><b>Bank Al Quds</b></div>
+    <div class="hero-rail-cd" id="countdown" aria-label="Time until the opening ceremony">
+      <span>Opens in</span>
+      <b><i data-cd="days">00</i>d <i data-cd="hours">00</i>h <i data-cd="mins">00</i>m <i data-cd="secs">00</i>s</b>
     </div>
-
-    <p class="divider" aria-hidden="true"><i></i><span></span><i></i></p>
-
-    <ul class="dates" aria-label="Conference dates">
-      <li><span>Thu</span><b>05</b></li>
-      <li><span>Fri</span><b>06</b></li>
-      <li><span>Sat</span><b>07</b></li>
-    </ul>
-    <p class="dates-month">November 2026</p>
-
-    <ul class="hero-facts">
-      <li><span>Dates</span><b data-event-dates>5 to 7 November 2026</b></li>
-      <li><span>City</span><b>Ramallah</b></li>
-      <li><span>Committees</span><b>Five, all levels</b></li>
-    </ul>
-
-    <p class="hero-count" id="countdown" aria-label="Time until the opening ceremony">
-      <span class="hc-lab">Opening ceremony in</span>
-      <span class="hc-t"><b data-cd="days">00</b>d</span>
-      <span class="hc-t"><b data-cd="hours">00</b>h</span>
-      <span class="hc-t"><b data-cd="mins">00</b>m</span>
-      <span class="hc-t"><b data-cd="secs">00</b>s</span>
-    </p>
   </div>
 </header>
 
@@ -464,7 +444,7 @@
 </footer>
 
 <script src="js/team-data.js?v=4"></script>
-<script src="js/main.js?v=23"></script>
+<script src="js/main.js?v=24"></script>
 <script src="js/three-scenes.js?v=6" defer></script>
 </body>
 </html>

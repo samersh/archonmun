@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=27">
+<link rel="stylesheet" href="css/style.css?v=29">
 </head>
 <body>
 
@@ -187,6 +187,7 @@
     <div class="hero-mark">
       <svg class="hero-crest" viewBox="0 0 500 500" role="img" aria-label="archonMUN crest"><use href="#crest"/></svg>
       <img class="crest-img hero-crest" src="assets/logo.png" alt="archonMUN crest" width="196" height="196">
+      <div class="hero-stage" id="heroStage" data-src="assets/logo.png" aria-hidden="true"></div>
     </div>
 
     <p class="eyebrow">
@@ -306,6 +307,11 @@
       <button class="chip" data-filter="beginner">Beginner</button>
       <button class="chip" data-filter="intermediate">Intermediate</button>
       <button class="chip" data-filter="advanced">Advanced</button>
+    </div>
+
+    <div class="rail" id="committeeRail" hidden aria-hidden="true">
+      <p class="rail-label" data-rail-label></p>
+      <p class="rail-hint">Scroll to turn the rail <i>&#9670;</i> click a seal to open it</p>
     </div>
 
     <div class="committees" id="committeeList"></div>
@@ -535,6 +541,7 @@
 </footer>
 
 <script src="js/team-data.js?v=4"></script>
-<script src="js/main.js?v=21"></script>
+<script src="js/main.js?v=22"></script>
+<script src="js/three-scenes.js?v=6" defer></script>
 </body>
 </html>

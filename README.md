@@ -141,7 +141,63 @@ Files are named by slug (`omar-shawar.jpg`), so replacing one person's
 portrait means overwriting one file. If a new photo frames badly, add
 `focus: '50% 20%'` to that entry rather than re-cropping.
 
+## The three.js scenes
+
+`js/three-scenes.js` adds two WebGL scenes over markup that already works
+without them. Loaded from a pinned r134 UMD build on cdnjs; the 0.160 build
+there is only a deprecation stub with no global, so it cannot be used.
+
+1. **The hero crest** becomes a struck medallion that turns slowly and leans
+   toward the pointer.
+2. **The committee seals** ride a rail that the page scroll turns. Clicking a
+   seal opens that committee in the list below and scrolls to it.
+
+Both are built from a flat `CircleGeometry` face, a mirrored reverse, and a
+metal rim, rather than a cylinder. A cylinder's end cap does not map a disc's
+UVs the way a coin face needs, and the artwork came out mirrored. The reverse
+is scaled `-1` on x so its lettering stays readable from behind.
+
+Everything is gated. No WebGL, three.js failing to load, or a viewport under
+900px for the rail, and the flat version stays exactly as it is; nothing is
+hidden until a scene reports `is-live`. Each renderer is parked by an
+IntersectionObserver whenever its section is off screen, so an idle tab is
+not spinning a GPU, and a phone only ever runs the single hero context.
+
+The rail's scroll range is deliberately mapped to the middle 60% of its
+traversal across the viewport. Driven by the whole section it would stall,
+because the renderer parks once the rail scrolls away, leaving the last
+seals unreachable; mapped across the raw traversal the first and last seals
+would face front only while the rail was half off screen.
+
 ## Content
+
+## The three.js scenes
+
+`js/three-scenes.js` adds two WebGL scenes over markup that already works
+without them. Loaded from a pinned r134 UMD build on cdnjs; the 0.160 build
+there is only a deprecation stub with no global, so it cannot be used.
+
+1. **The hero crest** becomes a struck medallion that turns slowly and leans
+   toward the pointer.
+2. **The committee seals** ride a rail that the page scroll turns. Clicking a
+   seal opens that committee in the list below and scrolls to it.
+
+Both are built from a flat `CircleGeometry` face, a mirrored reverse, and a
+metal rim, rather than a cylinder. A cylinder's end cap does not map a disc's
+UVs the way a coin face needs, and the artwork came out mirrored. The reverse
+is scaled `-1` on x so its lettering stays readable from behind.
+
+Everything is gated. No WebGL, three.js failing to load, or a viewport under
+900px for the rail, and the flat version stays exactly as it is; nothing is
+hidden until a scene reports `is-live`. Each renderer is parked by an
+IntersectionObserver whenever its section is off screen, so an idle tab is
+not spinning a GPU, and a phone only ever runs the single hero context.
+
+The rail's scroll range is deliberately mapped to the middle 60% of its
+traversal across the viewport. Driven by the whole section it would stall,
+because the renderer parks once the rail scrolls away, leaving the last
+seals unreachable; mapped across the raw traversal the first and last seals
+would face front only while the rail was half off screen.
 
 ## Content
 
@@ -184,8 +240,26 @@ through the FAQ, so there is one place to keep correct.
 
 ## Design notes
 
-Palette is the guide's four, taken from the seal: Ink Navy `#1B2A4A`,
-Antique Gold `#C9A227`, Olive Green `#4B6B3A`, Ivory `#F3ECDD`.
+Palette is sampled from the two fans, Radial Meander and Terracotta
+Medallion, rather than eyeballed. Each pigment was read off the photograph
+by clustering inside the fan, with the paper ground and the wood ribs
+excluded:
+
+| Token | Value | From |
+|---|---|---|
+| `--navy` | `#232A31` | the deep blue-black blades |
+| `--slate` / `--navy-3` | `#3A4A55` | the lighter blue blades |
+| `--olive` | `#5E4D30` | the bronze olive blades |
+| `--accent` | `#8E4A2F` | terracotta, the second fan's field |
+| `--rust` | `#653621` | its darker rust |
+| `--gold` | `#B9935F` | the meander bands |
+| `--gold-hi` | `#DCC19B` | their highlight |
+| `--parchment` | `#EADDD1` | the paper both fans sit on |
+
+Terracotta replaced olive green as the editorial accent, so section titles,
+the drop cap, and links on light grounds now read warm. Olive stayed for the
+crest laurel and the beginner level chip. The three level chips run olive,
+gold, terracotta.
 
 Type stack:
 

@@ -5,38 +5,45 @@
    ══════════════════════════════════════════════════════════════════ */
 
 :root{
-  /* A chamber, not a poster. Warm near-black ground lit low, ivory and
-     gold on it. The brand navy survives as the cool undertone in the
-     shadows rather than as a flat panel colour. */
-  --ink-0:#15120F;             /* deepest ground */
-  --navy:#1B1813;              /* the dark ground, warm */
-  --navy-2:#241F19;
-  --navy-3:#332C23;
-  --navy-line:rgba(233,223,206,.14);
+  /* A bright gallery rather than a lit chamber: warm alabaster ground,
+     ink for type, brass for accent. Deepened the gold, because the tone
+     that read as light on near-black is far too pale on ivory. */
+  --bg:#F4EFE7;                /* the ground */
+  --bg-2:#EAE3D7;              /* the alternating band */
+  --surface:#FBF8F2;           /* raised panels */
 
-  --parchment:#EFE7DA;         /* ivory */
-  --parchment-2:#E0D5C4;
-  --cream:#FBF7F0;
+  --navy:#EAE3D7;              /* what used to be the dark section */
+  --navy-2:#E2D9CA;
+  --navy-3:#D6CBB8;
+  --navy-line:rgba(38,33,27,.16);
 
-  --gold:#C0A070;              /* lit brass */
-  --gold-hi:#E2C999;
-  --gold-deep:#8A6E45;
+  --parchment:#F4EFE7;
+  --parchment-2:#E6DED1;
+  --cream:#FBF8F2;
 
-  --accent:#3E6B3A;            /* laurel, used sparingly */
-  --accent-hi:#5A8A52;
+  /* Two golds on purpose. --gold is the metal: rules, the 3D rim, large
+     display type, where 3:1 is the bar. --gold-text is the same hue taken
+     down until small capitals clear 4.5:1 on every ground we use. */
+  --gold:#A8834B;              /* decorative brass */
+  --gold-hi:#8C6A38;
+  --gold-text:#7A5A2B;         /* AA on alabaster, the band, and white */
+  --gold-deep:#6E5229;
+
+  --accent:#3B5F38;            /* laurel */
+  --accent-hi:#2E4B2C;
   --olive:#4A6B3A;
   --stone:#A2968A;
-  --slate:#2C3450;             /* the brand navy, as an undertone */
+  --slate:#2C3450;
   --terracotta:#8E4A2F;
   --wood:#4D3721;
 
-  --ink:#1B1813;
+  --ink:#26211B;
   --ink-2:#4A4238;
-  --ink-3:#7D7368;
+  --ink-3:#6B6155;   /* AA against the alabaster ground */
 
-  --crest-ink:#1B1813;
-  --crest-gold:#C0A070;
-  --crest-leaf:#3E6B3A;
+  --crest-ink:#26211B;
+  --crest-gold:#A8834B;
+  --crest-leaf:#3B5F38;
 
   --f-inscribe:'Cinzel',Georgia,serif;
   --f-display:'Cormorant Garamond','Cormorant',Georgia,serif;
@@ -62,12 +69,7 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-/* paper grain over the whole document */
-body::after{
-  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
+/* no grain, no wallpaper: the ground is plain */
 img,svg{max-width:100%;display:block}
 h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.04}
 p{margin:0 0 1em}
@@ -117,17 +119,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .sec-navy .lab,.foot .lab{color:rgba(239,231,218,.8)}
 
-/* Greek key rule used as a divider */
-.rule-key{
-  height:18px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18' viewBox='0 0 28 18'%3E%3Cg fill='none' stroke='%231B1813' stroke-width='2'%3E%3Cpath d='M0 17H28'/%3E%3Cpath d='M4 17V3H24V13H10V8H18'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:repeat-x;background-position:0 100%;
-  background-size:auto 18px;opacity:.45;
-}
-.rule-key.light{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18' viewBox='0 0 28 18'%3E%3Cg fill='none' stroke='%23C0A070' stroke-width='2'%3E%3Cpath d='M0 17H28'/%3E%3Cpath d='M4 17V3H24V13H10V8H18'/%3E%3C/g%3E%3C/svg%3E");
-  opacity:.65;
-}
+.rule-key{display:none}
 
 /* ── buttons ─────────────────────────────────────────────────────── */
 .btn{
@@ -387,11 +379,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pad-top-0{padding-top:0}
 .sec-parchment{background:var(--parchment);color:var(--ink)}
 .sec-navy{background:var(--navy);color:var(--cream)}
-.sec-navy::before{
-  content:'';position:absolute;inset:0;pointer-events:none;opacity:.018;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M8 82h74V8H24v58h50V24H40v34h18V40' fill='none' stroke='%23EFE7DA' stroke-width='3'/%3E%3C/svg%3E");
-  background-size:150px 150px;
-}
+
 .sec-navy > .wrap{position:relative;z-index:1}
 
 /* reveal on scroll */
@@ -1101,12 +1089,7 @@ figure.pl-shot img{
    ══════════════════════════════════════════════════════════════════ */
 
 /* a meander band, drawn heavy enough to read as inlay rather than rule */
-.meander{
-  --m-col:%23C0A070;
-  height:16px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Cpath d='M0 12.8L41.6 12.8L41.6 3.2L9.6 3.2L9.6 6.4L32 6.4L32 9.6L16 9.6' fill='none' stroke='%23C0A070' stroke-width='3.2' stroke-linecap='square'/%3E%3C/svg%3E");
-  background-repeat:repeat-x;background-size:auto 16px;
-}
+.meander{display:none}
 
 /* a panel framed by the key, the shape every card in the set uses */
 .framed{position:relative;padding:clamp(26px,3.4vw,46px)}
@@ -1252,3 +1235,139 @@ figure.pl-shot img{
 .rule-key{opacity:.3}
 .framed::before{border-color:rgba(226,201,153,.3)}
 .framed::after{border-color:rgba(226,201,153,.16)}
+
+/* ══ LIGHT GALLERY ═════════════════════════════════════════════════
+   The scheme inverted. Everything that was cream-on-dark is now
+   ink-on-alabaster, so each of those rules needs its counterpart
+   rather than inheriting a colour meant for a black room.
+   ══════════════════════════════════════════════════════════════════ */
+body{background:var(--bg);color:var(--ink)}
+
+.sec-parchment{background:var(--bg);color:var(--ink)}
+.sec-navy{background:var(--bg-2);color:var(--ink)}
+.sec-navy::before{content:none}
+
+/* ── the hero becomes a lit gallery, not a dark chamber ───────────── */
+.hero{
+  color:var(--ink);
+  background:
+    radial-gradient(128% 94% at 50% 36%,#FDFBF7 0%,#F4EFE7 52%,#E7DFD2 100%);
+}
+.hero-amb{
+  background:
+    radial-gradient(44% 34% at 50% 32%,rgba(255,255,255,.75) 0%,transparent 72%),
+    radial-gradient(72% 48% at 50% 104%,rgba(168,131,75,.1) 0%,transparent 72%);
+}
+.hero-arch{
+  border-color:rgba(38,33,27,.14);
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 64%);
+  box-shadow:0 40px 90px -50px rgba(38,33,27,.3);
+}
+.hero-arch::before{border-color:rgba(38,33,27,.08)}
+.spine{color:rgba(38,33,27,.5)}
+.hero-mark::before{
+  background:radial-gradient(circle,rgba(255,255,255,.9) 0%,transparent 66%);
+}
+.hero-mark img.hero-crest{box-shadow:0 26px 50px -28px rgba(38,33,27,.45)}
+.hero-title{color:var(--ink)}
+.eyebrow{color:var(--gold-hi)}
+.swap{color:var(--gold)}
+.swap-word::after{background:var(--ink);opacity:.75}
+.btn-line{color:var(--gold-hi);border-color:rgba(168,131,75,.5)}
+.btn-line:hover{background-color:var(--ink);border-color:var(--ink);color:var(--surface)}
+.hero-rail span{color:rgba(38,33,27,.68)}
+.hero-rail b{color:var(--ink)}
+.hero-rail-cd b,.countdown-live{color:var(--gold-hi)}
+
+/* ── nav on a light ground ────────────────────────────────────────── */
+.nav-word{color:var(--ink)}
+.nav-word b{color:var(--gold-hi)}
+.nav-links a{color:rgba(38,33,27,.78)}
+.nav-links a:hover,.nav-links a.is-current{color:var(--gold-hi)}
+.nav.is-stuck{
+  background:rgba(250,247,242,.9);
+  border-bottom-color:rgba(38,33,27,.1);
+}
+.nav .btn-sm{color:var(--gold-hi);border-color:rgba(168,131,75,.45)}
+.nav .btn-sm:hover{background-color:var(--ink);border-color:var(--ink);color:var(--surface)}
+.nav-toggle span{background:var(--ink)}
+.nav-crest,.hero-crest,.foot-crest{--crest-ink:#26211B;--crest-leaf:#3B5F38;--crest-gold:#A8834B}
+@media (max-width:900px){
+  .nav-links{background:rgba(250,247,242,.985)}
+  .nav-links li{border-bottom-color:rgba(38,33,27,.1)}
+}
+
+/* ── sections that assumed a dark ground ──────────────────────────── */
+.sec-title.light,.sec-lead.light{color:var(--ink)}
+.sec-lead.light{color:var(--ink-2)}
+.sec-title.light em{color:var(--gold-hi)}
+.glance li{background:var(--surface);border:1px solid rgba(38,33,27,.1)}
+.glance{background:transparent;border:0;gap:clamp(12px,1.6vw,20px)}
+.g-num{color:var(--gold)}
+.g-lab{color:var(--ink)}
+.g-sub{color:var(--ink-3)}
+.glance-strip{border-top-color:rgba(38,33,27,.14)}
+.glance-strip .val{color:var(--ink)}
+
+.places{background:rgba(38,33,27,.1);border-color:rgba(38,33,27,.1)}
+.places > li{background:var(--surface)}
+.places > li:hover{background:var(--cream)}
+.pl-body h3{color:var(--ink)}
+.pl-note{color:var(--ink-2)}
+.pl-meta{color:var(--ink-3)}
+.pl-what{color:var(--gold-hi)}
+figure.pl-shot{border-color:rgba(38,33,27,.14);background:var(--bg-2)}
+.transit{border-top-color:rgba(38,33,27,.14)}
+.transit-copy p{color:var(--ink-2)}
+.transit-pts li{color:var(--ink)}
+.tp-body b{color:var(--gold-hi)}
+.tp-where{color:var(--ink)}
+.tp-where i{color:var(--ink-3)}
+.tp-when{color:var(--ink-3)}
+.transit-facts > div{border-bottom-color:rgba(38,33,27,.16)}
+.transit-facts .val{color:var(--ink)}
+.panel-h{color:var(--gold-hi);border-bottom-color:rgba(168,131,75,.3)}
+
+.chair-cta{color:var(--ink-2);border-top-color:rgba(38,33,27,.16)}
+.chair-cta a{color:var(--gold-hi)}
+
+/* ── footer ───────────────────────────────────────────────────────── */
+.foot{
+  background:var(--bg-2);color:var(--ink);
+  border-top:1px solid rgba(38,33,27,.12);
+}
+.foot-word{color:var(--ink)}
+.foot-word b{color:var(--gold-hi)}
+.foot-tag{color:var(--ink-3)}
+.foot-h{color:var(--gold-hi)}
+.foot-col a{color:rgba(38,33,27,.8)}
+.foot-col a:hover{color:var(--gold-hi)}
+.foot-loc,.foot-bot{color:var(--ink-3)}
+.foot-motto i{color:var(--gold)}
+.foot-host{border-bottom-color:rgba(38,33,27,.14)}
+.foot-host-lab{color:var(--ink-3)}
+.foot-host-mark,.umbrella-mark{background:var(--surface)}
+.handle{color:var(--ink-3)}
+
+/* ── the rail, on light ───────────────────────────────────────────── */
+.rail-label b{color:var(--ink)}
+.rail-label i{color:var(--gold-hi)}
+.rail-hint{color:var(--ink-3)}
+.rail-hint i{color:var(--gold)}
+
+/* ── schedule ─────────────────────────────────────────────────────── */
+.schedule{background:rgba(38,33,27,.1);border-color:rgba(38,33,27,.1)}
+.schedule > li{background:var(--surface)}
+.sc-row.is-session::before{background:var(--ink);border-color:var(--ink)}
+.sc-row.is-ceremony::before{background:var(--gold);border-color:var(--gold)}
+.sc-row.is-social::before{background:var(--accent);border-color:var(--accent)}
+
+/* small capitals carry the readable gold, never the decorative one */
+.eyebrow,.kicker,.panel-h,.foot-h,.pl-what,.tp-body b,
+.rail-label i,.hero-rail-cd b,.hc-lab,.dates span,.dates-month,
+.topic-i,.tm-role,.handle,.sc-key span{color:var(--gold-text)}
+.nav-word b,.nav-links a:hover,.nav-links a.is-current,
+.nav .btn-sm,.btn-line,.chair-cta a,.foot-col a:hover,
+.foot-word b,.tier-cta a{color:var(--gold-text)}
+.sec-title em,.sec-title.light em{color:var(--gold-text)}
+.rail-hint{color:var(--ink-3)}

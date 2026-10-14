@@ -62,11 +62,11 @@
     const g = new THREE.Group();
 
     const faceMat = new THREE.MeshStandardMaterial({
-      map: texture, metalness: .12, roughness: .58, transparent: true
+      map: texture, metalness: .05, roughness: .66, transparent: true
     });
     const rimMat = new THREE.MeshStandardMaterial({
       color: new THREE.Color(css('--gold') || '#B9935F'),
-      metalness: .9, roughness: .3
+      metalness: .78, roughness: .36
     });
 
     const disc = new THREE.CircleGeometry(R, 96);
@@ -90,15 +90,19 @@
   }
 
   function light(THREE, scene, warm) {
-    scene.add(new THREE.AmbientLight(0xffffff, .55));
-    const key = new THREE.DirectionalLight(0xfff3e4, 1.5);
-    key.position.set(-2.4, 3.2, 4.2);
+    // Lit for a bright room, not a dark one. On a near-black ground a low
+    // ambient and a hard key read as drama; on alabaster the same setup
+    // leaves the seal looking dirty, so ambient carries most of it and the
+    // key is there only to keep the rim reading as metal.
+    scene.add(new THREE.AmbientLight(0xffffff, 1.15));
+    const key = new THREE.DirectionalLight(0xfffaf2, .85);
+    key.position.set(-2.2, 3.4, 4.4);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(new THREE.Color(warm), .9);
-    rim.position.set(3.4, -1.6, -2.4);
-    scene.add(rim);
-    const fill = new THREE.DirectionalLight(0x9fb4c6, .4);
-    fill.position.set(2.6, 1.2, 2.2);
+    const warmLight = new THREE.DirectionalLight(new THREE.Color(warm), .35);
+    warmLight.position.set(3.2, -1.4, -2.2);
+    scene.add(warmLight);
+    const fill = new THREE.DirectionalLight(0xffffff, .5);
+    fill.position.set(2.4, 1.4, 2.6);
     scene.add(fill);
   }
 

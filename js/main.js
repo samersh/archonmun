@@ -29,6 +29,7 @@ const SWAP_WORDS = ['system', 'table', 'order', 'rules', 'map'];
 const COMMITTEES = [
   {
     abbr: 'Historical ICC',
+    seal: 'assets/committees/icc.png',
     full: 'International Criminal Court, Historical',
     level: 'advanced',
     blurb: 'Two trials, two centuries apart, one question that refuses to close: who is allowed ' +
@@ -53,6 +54,7 @@ const COMMITTEES = [
   },
   {
     abbr: 'HRC',
+    seal: 'assets/committees/unhrc.png',
     full: 'Human Rights Council',
     level: 'beginner',
     blurb: 'The starting floor, and not a soft one. Two debates about who counts as a person when ' +
@@ -77,6 +79,7 @@ const COMMITTEES = [
   },
   {
     abbr: 'UNDP',
+    seal: 'assets/committees/undp.png',
     full: 'United Nations Development Programme',
     level: 'beginner',
     blurb: 'A development committee with the lights off and the wards full. Both topics open with ' +
@@ -104,6 +107,7 @@ const COMMITTEES = [
   },
   {
     abbr: 'UNSC',
+    seal: 'assets/committees/unsc.png',
     full: 'United Nations Security Council',
     level: 'intermediate',
     blurb: 'Fifteen seats, five vetoes, and a system that was designed in 1945 to stay exactly as ' +
@@ -125,6 +129,7 @@ const COMMITTEES = [
   },
   {
     abbr: 'Crisis',
+    seal: 'assets/committees/crisis.png',
     full: 'Joint Crisis Committee',
     level: 'advanced',
     blurb: 'The loudest room at archonMUN. Directives, backroom cabinets, and updates that land ' +
@@ -279,7 +284,9 @@ function renderCommittees() {
     <div class="cm" data-level="${c.level}">
       <h3>
         <button class="cm-head" aria-expanded="false" aria-controls="${id}">
-          <span class="cm-num">${ROMAN[i]}</span>
+          <span class="cm-seal">
+            <img src="${esc(c.seal)}" alt="" width="200" height="200" loading="lazy" decoding="async">
+          </span>
           <span class="cm-name">
             <span class="cm-abbr">${esc(c.abbr)}</span>
             <span class="cm-full">${esc(c.full)}</span>

@@ -152,9 +152,17 @@ colour and is one of `session`, `ceremony`, `break`, `social`, `travel`, or
 omitted. Day headings come from `CONFIG.days`, so moving the dates moves
 them automatically. Edit the
 `COMMITTEES`, `TEAM`, and `FAQ` arrays in `js/main.js` and the page rebuilds
-itself. Each topic carries an `i` key naming its motif icon, per the guide's
-suggested visual per topic; the nine symbols are in the icon sprite at the top
-of `index.html`. Committee
+itself. Each committee carries a `seal` pointing at its crest in
+`assets/committees/`, shown in the committee header. Each topic separately
+carries an `i` key naming its drawn motif, per the brief's suggested visual
+per topic; those nine symbols are in the icon sprite at the top of
+`index.html`. So the hierarchy is seal for the committee, small motif for
+each topic inside it.
+
+The five seals were supplied as 1920px JPEGs on a black ground. The black was
+flood filled to transparent from the corners so the cut follows each seal's
+own rim, then trimmed, resized to 440px and palette compressed. 280 KB for
+all five. Committee
 `level` must be `beginner`, `intermediate`, or `advanced`, which is what the
 filter chips read.
 

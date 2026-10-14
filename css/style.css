@@ -520,10 +520,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .cm-head:hover::before{opacity:1}
 .cm-head > *{position:relative}
-.cm-num{
-  font-family:var(--f-display);font-size:clamp(15px,1.3vw,18px);color:var(--gold);
-  width:2.2em;letter-spacing:.02em;
+/* each committee carries its own seal in place of a numeral */
+.cm-seal{
+  display:block;width:clamp(54px,5.6vw,78px);flex:none;
+  transition:transform .5s var(--ease-soft);
 }
+.cm-seal img{width:100%;height:auto;display:block}
+.cm-head:hover .cm-seal{transform:scale(1.06) rotate(-2deg)}
+.cm-head[aria-expanded="true"] .cm-seal{transform:scale(1.04)}
 .cm-name{display:flex;flex-direction:column;gap:4px}
 .cm-abbr{font-family:var(--f-display);font-size:clamp(24px,3.4vw,40px);line-height:1.02;
   letter-spacing:-.02em;transition:color .3s var(--ease)}

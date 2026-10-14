@@ -7,10 +7,10 @@
    PLACEHOLDERS. Replace with the confirmed details before going live.
    `start` drives the hero countdown. Times are Palestine local (UTC+3). */
 const CONFIG = {
-  start:    '2026-10-08T09:00:00+03:00',   // opening ceremony, drives the countdown
-  dates:    '8 to 10 October 2026',
-  days:     ['Thursday, 8 October', 'Friday, 9 October', 'Saturday, 10 October'],
-  deadline: '26 September 2026',            // registration closes
+  start:    '2026-11-05T09:00:00+02:00',   // opening ceremony, drives the countdown
+  dates:    '5 to 7 November 2026',
+  days:     ['Thursday, 5 November', 'Friday, 6 November', 'Saturday, 7 November'],
+  deadline: '22 October 2026',              // registration closes
   city:     'Ramallah',
   venue:    'Bank Al Quds, Al Masyoun',
   domain:   'arcmun.online',
@@ -148,6 +148,62 @@ const LEVEL_LABEL = {
 };
 
 
+
+/* ── PROGRAMME ────────────────────────────────────────────────────────
+   Transcribed from the Secretariat's running order, normalised to a
+   24 hour clock. `kind` only picks the colour of the marker: travel,
+   break, session, ceremony, social, or blank for everything else.
+   Day labels come from CONFIG.days, so changing the dates changes these.
+   ══════════════════════════════════════════════════════════════════ */
+const SCHEDULE = [
+  { day: 'Day I', items: [
+    { t: '09:00',       w: 'Buses depart Jerusalem for Ramallah',           k: 'travel' },
+    { t: '09:30-10:00', w: 'Arrival and check in, Jerusalem and national delegates' },
+    { t: '10:00-10:20', w: 'Arrive at the auditorium' },
+    { t: '10:00-11:00', w: 'Registration' },
+    { t: '11:00-12:30', w: 'Opening ceremony',                              k: 'ceremony' },
+    { t: '12:30-13:00', w: 'Move to the main venue' },
+    { t: '13:00-13:30', w: 'Coffee break',                                  k: 'break' },
+    { t: '13:30-14:30', w: 'Session 1',                                     k: 'session' },
+    { t: '14:30-15:30', w: 'Lunch break',                                   k: 'break' },
+    { t: '15:30-17:00', w: 'Session 2',                                     k: 'session' },
+    { t: '17:00-17:20', w: 'Coffee break',                                  k: 'break' },
+    { t: '17:20-19:00', w: 'Session 3',                                     k: 'session' },
+    { t: '19:00-19:30', w: 'Departure and chair meeting' },
+    { t: '19:30',       w: 'Buses depart Ramallah for Jerusalem',           k: 'travel' }
+  ]},
+
+  { day: 'Day II', items: [
+    { t: '08:00',       w: 'Buses depart Jerusalem for Ramallah',           k: 'travel' },
+    { t: '08:30-09:00', w: 'Arrival' },
+    { t: '09:00-12:00', w: 'Session 4',                                     k: 'session' },
+    { t: '12:00-12:20', w: 'Coffee break',                                  k: 'break' },
+    { t: '12:20-14:30', w: 'Session 5',                                     k: 'session' },
+    { t: '14:30-15:40', w: 'Lunch break',                                   k: 'break' },
+    { t: '15:40-17:00', w: 'Session 6',                                     k: 'session' },
+    { t: '17:00-17:20', w: 'Coffee break',                                  k: 'break' },
+    { t: '17:20-18:30', w: 'Session 7',                                     k: 'session' },
+    { t: '19:00-21:30', w: 'Social event',                                  k: 'social' },
+    { t: '21:30-22:00', w: 'Departure' },
+    { t: '21:30',       w: 'Buses depart Ramallah for Jerusalem',           k: 'travel' }
+  ]},
+
+  { day: 'Day III', items: [
+    { t: '08:40-09:00', w: 'Arrival' },
+    { t: '09:00-10:30', w: 'Session 9',                                     k: 'session' },
+    { t: '10:30-10:50', w: 'Coffee break',                                  k: 'break' },
+    { t: '10:50-12:50', w: 'Session 10',                                    k: 'session' },
+    { t: '12:50-13:10', w: 'Coffee break',                                  k: 'break' },
+    { t: '13:10-14:30', w: 'Session 11',                                    k: 'session' },
+    { t: '14:30-15:40', w: 'Lunch break',                                   k: 'break' },
+    { t: '15:40-16:30', w: 'Session 12',                                    k: 'session' },
+    { t: '16:30-16:50', w: 'Coffee break and chair meeting',                k: 'break' },
+    { t: '17:20-19:20', w: 'Closing ceremony',                              k: 'ceremony' },
+    { t: '19:20-19:40', w: 'Departure' },
+    { t: '19:40',       w: 'Buses depart Ramallah for Jerusalem',           k: 'travel' }
+  ]}
+];
+
 /* ── FAQ ────────────────────────────────────────────────────────────── */
 const FAQ = [
   { q: 'Do I need previous Model UN experience?',
@@ -176,8 +232,8 @@ const FAQ = [
        'with each other. Write to the Secretariat before registering individually.' },
   { q: 'I am coming from Jerusalem. How do I get to Ramallah?',
     a: 'Delegates on the transport tier are collected each morning and returned each evening. ' +
-       'On the opening and closing days, 8 and 10 October, there are two pickup points: New Gate ' +
-       'and the Beit Hanina train station. On 9 October, the day in between, pickup runs from ' +
+       'On the opening and closing days, 5 and 7 November, there are two pickup points: New Gate ' +
+       'and the Beit Hanina train station. On 6 November, the day in between, pickup runs from ' +
        'New Gate only. Exact times are confirmed by email once your registration is paid.' },
   { q: 'I am travelling from abroad. What about visas?',
     a: 'Check the requirements for your passport early, since processing times vary widely. The ' +
@@ -302,6 +358,28 @@ function renderTeamAll() {
   if (!host || typeof TEAM === 'undefined') return;
   host.innerHTML = teamCards(TEAM);
   $$('[data-team-count]').forEach(el => { el.textContent = TEAM.length; });
+}
+
+
+/* the running order, one block per day -------------------------------- */
+function renderSchedule() {
+  const host = $('#scheduleList');
+  if (!host || typeof SCHEDULE === 'undefined') return;
+
+  host.innerHTML = SCHEDULE.map((d, i) => `
+    <li class="reveal">
+      <div class="sc-head">
+        <span class="p-day">${esc(d.day)}</span>
+        <span class="p-date" data-day="${i + 1}">${esc(CONFIG.days[i] || '')}</span>
+      </div>
+      <ol class="sc-rows">
+        ${d.items.map(it => `
+          <li class="sc-row${it.k ? ` is-${it.k}` : ''}">
+            <span class="sc-t">${esc(it.t)}</span>
+            <span class="sc-w">${esc(it.w)}</span>
+          </li>`).join('')}
+      </ol>
+    </li>`).join('');
 }
 
 /* faq -------------------------------------------------------------- */
@@ -558,6 +636,7 @@ renderCommittees();
 initFilters();
 renderTeam();
 renderTeamAll();
+renderSchedule();
 renderFaq();
 initCountdown();
 initSwap();

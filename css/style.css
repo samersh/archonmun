@@ -599,32 +599,83 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .skyline-cap{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;
   color:rgba(243,236,221,.64);margin:0}
 
-/* ══ PROGRAMME ═════════════════════════════════════════════════════ */
-.programme{display:grid;gap:1px;background:rgba(27,42,74,.18);
-  border:1px solid rgba(27,42,74,.18)}
-.programme > li{
-  background:var(--parchment);padding:clamp(26px,3.4vw,40px);
-  display:grid;grid-template-columns:minmax(180px,.4fr) 1fr;gap:clamp(18px,3vw,40px);
-  transition:background .4s var(--ease);
+/* ══ PROGRAMME ═════════════════════════════════════════════════════
+   A running order, so it reads as a timetable: a fixed time column on
+   the left, the item on the right, and a marker whose colour says what
+   kind of block it is.
+   ══════════════════════════════════════════════════════════════════ */
+.sc-key{
+  display:flex;flex-wrap:wrap;gap:8px 18px;
+  margin:0 0 clamp(22px,2.8vw,32px);
 }
-.programme > li:hover{background:var(--cream)}
+.sc-key span{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.sc-key span::before{
+  content:'';width:9px;height:9px;flex:none;transform:rotate(45deg);
+  background:var(--ink-3);
+}
+.schedule{display:grid;gap:1px;background:rgba(27,42,74,.18);
+  border:1px solid rgba(27,42,74,.18)}
+.schedule > li{
+  background:var(--parchment);padding:clamp(22px,3vw,34px);
+  display:grid;grid-template-columns:minmax(190px,.32fr) 1fr;
+  gap:clamp(18px,3vw,40px);
+}
+.sc-head{align-self:start;position:sticky;top:96px}
 .p-day{
   font-family:var(--f-display);font-size:clamp(28px,3.6vw,44px);line-height:1;
   color:var(--green);display:block;
 }
 .p-date{
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);display:block;margin-top:10px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-top:10px;
 }
-.programme ul{display:grid;gap:14px;align-content:start}
-.programme ul li{
-  position:relative;padding-left:26px;font-size:16px;color:var(--ink-2);
+
+.sc-rows{display:grid;gap:0}
+.sc-row{
+  display:grid;grid-template-columns:minmax(104px,auto) 1fr;
+  gap:clamp(14px,2vw,26px);align-items:baseline;
+  padding:11px 0 11px 20px;position:relative;
+  border-bottom:1px dotted rgba(27,42,74,.2);
 }
-.programme ul li::before{
-  content:'';position:absolute;left:0;top:.62em;width:9px;height:9px;
-  border:1.5px solid var(--gold);transform:rotate(45deg);
+.sc-row:last-child{border-bottom:0}
+.sc-row::before{                       /* the kind marker */
+  content:'';position:absolute;left:0;top:1.05em;
+  width:9px;height:9px;transform:rotate(45deg);
+  background:transparent;border:1.5px solid rgba(27,42,74,.3);
 }
-.programme ul b{color:var(--ink);font-weight:600}
+.sc-t{
+  font-family:var(--f-mono);font-size:12.5px;letter-spacing:.04em;
+  color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.sc-w{font-size:15.5px;color:var(--ink-2)}
+
+/* the blocks that carry weight get a filled marker and darker type */
+.sc-row.is-session::before,.sc-key .is-session::before{background:var(--navy);border-color:var(--navy)}
+.sc-row.is-ceremony::before,.sc-key .is-ceremony::before{background:var(--gold);border-color:var(--gold)}
+.sc-row.is-social::before,.sc-key .is-social::before{background:var(--green);border-color:var(--green)}
+.sc-row.is-travel::before,.sc-key .is-travel::before{
+  background:transparent;border-color:var(--ink-3);border-radius:50%;transform:none}
+.sc-row.is-break::before,.sc-key .is-break::before{background:transparent;border-color:rgba(27,42,74,.28)}
+
+.sc-row.is-session .sc-w,.sc-row.is-ceremony .sc-w{
+  font-family:var(--f-display);font-size:clamp(17px,1.5vw,21px);color:var(--ink);
+}
+.sc-row.is-social .sc-w{font-family:var(--f-display);font-size:clamp(16px,1.4vw,19px);color:var(--green)}
+.sc-row.is-break .sc-w,.sc-row.is-travel .sc-w{color:var(--ink-3);font-size:14.5px}
+.sc-row.is-travel .sc-t{color:var(--ink-3)}
+
+@media (max-width:900px){
+  .schedule > li{grid-template-columns:1fr;row-gap:20px}
+  .sc-head{position:static}
+}
+@media (max-width:560px){
+  .sc-row{grid-template-columns:1fr;gap:2px;padding-left:18px}
+  .sc-row::before{top:.55em}
+}
 
 /* ══ FEES ══════════════════════════════════════════════════════════ */
 .fees{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px)}

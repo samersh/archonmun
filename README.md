@@ -1,6 +1,6 @@
 # archonMUN 2026 · Rewrite the System
 
-Static site for archonMUN (Archon Model United Nations), 8 to 10 October 2026
+Static site for archonMUN (Archon Model United Nations), 5 to 7 November 2026
 in Ramallah, hosted at Bank Al Quds. Live at https://arcmun.online (GitHub Pages).
 
 No build step, no dependencies. Three files do the work: `index.html`,
@@ -31,9 +31,9 @@ All dates and venue names live in one place: the `CONFIG` block at the top of
 
 | Field | Current value | Status |
 |---|---|---|
-| `start` | `2026-10-08T09:00:00+03:00` | Confirmed. Drives the countdown. |
-| `dates` | `8 to 10 October 2026` | Confirmed. |
-| `deadline` | `26 September 2026` | Confirmed. |
+| `start` | `2026-11-05T09:00:00+02:00` | Confirmed. Drives the countdown. |
+| `dates` | `5 to 7 November 2026` | Confirmed. |
+| `deadline` | `22 October 2026` | Confirmed. |
 | `city` / `venue` | Ramallah / Bank Al Quds, Al Masyoun | Confirmed. |
 | `register` | Google Form | Confirmed. Delegate application; all six Register buttons. |
 | `chair` | Google Form | Confirmed. Separate chair application. |
@@ -145,7 +145,12 @@ portrait means overwriting one file. If a new photo frames badly, add
 
 ## Content
 
-Committees, topics, and the FAQ are data, not markup. Edit the
+Committees, topics, the schedule, and the FAQ are data, not markup. The
+running order lives in the `SCHEDULE` array in `js/main.js`: one block per
+day, each item `{ t: time, w: what, k: kind }`. `k` only picks the marker
+colour and is one of `session`, `ceremony`, `break`, `social`, `travel`, or
+omitted. Day headings come from `CONFIG.days`, so moving the dates moves
+them automatically. Edit the
 `COMMITTEES`, `TEAM`, and `FAQ` arrays in `js/main.js` and the page rebuilds
 itself. Each topic carries an `i` key naming its motif icon, per the guide's
 suggested visual per topic; the nine symbols are in the icon sprite at the top

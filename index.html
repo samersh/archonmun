@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body>
 
@@ -161,10 +161,9 @@
     <li><a href="#committees">Committees</a></li>
     <li><a href="#venue">Venue</a></li>
     <li><a href="#programme">Programme</a></li>
-    <li><a href="#register">Fees</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a class="btn btn-sm" href="#register" data-register-link>Register</a>
+  <a class="btn btn-sm" href="#" data-register-link>Register</a>
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -209,7 +208,7 @@
       to the many. We do not ask for a seat at the table. We rewrite it.</p>
 
     <div class="hero-cta">
-      <a class="btn btn-gold" href="#register" data-register-link>Register now</a>
+      <a class="btn btn-gold" href="#" data-register-link>Register now</a>
       <a class="btn btn-ghost" href="#committees">See the five committees</a>
     </div>
 
@@ -288,7 +287,7 @@
       <div><span class="lab">Dates</span><span class="val" data-event-dates>5 to 7 November 2026</span></div>
       <div><span class="lab">City</span><span class="val">Ramallah</span></div>
       <div><span class="lab">Applications close</span><span class="val" data-deadline>22 October 2026</span></div>
-      <div><span class="lab">Fees from</span><span class="val">NIS 300</span></div>
+      <div><span class="lab">Working language</span><span class="val">English</span></div>
     </div>
   </div>
 </section>
@@ -310,6 +309,11 @@
     </div>
 
     <div class="committees" id="committeeList"></div>
+
+    <p class="chair-cta reveal">
+      Not applying as a delegate? The dais is recruiting too.
+      <a href="#" data-chair-link>Apply to chair a committee.</a>
+    </p>
   </div>
 </section>
 
@@ -436,118 +440,14 @@
   </div>
 </section>
 
-<!-- ══ REGISTER ═════════════════════════════════════════════════════ -->
-<section class="sec sec-navy" id="register">
-  <div class="wrap">
-    <p class="kicker reveal">VII <i>·</i> Registration</p>
-    <h2 class="sec-title light reveal">Take a placard.</h2>
-    <p class="sec-lead light reveal">Same conference in every tier: all five committees, both
-      ceremonies, study guides, meals on session days, the social event, and certification. What
-      changes is how you get there and where you sleep.</p>
-
-    <div class="fees">
-      <article class="fee reveal">
-        <p class="fee-tag">Tier one</p>
-        <h3>Base registration</h3>
-        <p class="fee-price"><span class="cur">NIS</span>300</p>
-        <ul class="fee-list">
-          <li>All three days of committee sessions</li>
-          <li>Opening and closing ceremonies</li>
-          <li>Delegate handbook and study guides</li>
-          <li>Lunch and refreshments on session days</li>
-          <li>Social event and certification</li>
-        </ul>
-        <p class="fee-fine">You arrange your own transport and stay. Best if you are already
-          in or near Ramallah.</p>
-        <a class="btn btn-ghost full" href="#contact" data-register-link>Register</a>
-      </article>
-
-      <article class="fee fee-feature reveal">
-        <p class="fee-tag">Tier two<i>Most delegates choose this</i></p>
-        <h3>Registration and transport</h3>
-        <p class="fee-price"><span class="cur">NIS</span>450</p>
-        <ul class="fee-list">
-          <li>Everything in tier one</li>
-          <li>Daily round trip transport to the venue</li>
-          <li>New Gate and Beit Hanina on 5 and 7 November</li>
-          <li>New Gate only on 6 November</li>
-          <li>Seat held for the full weekend</li>
-        </ul>
-        <p class="fee-fine">Best if you are commuting in from Jerusalem and would rather not
-          solve the journey twice a day.</p>
-        <a class="btn btn-gold full" href="#contact" data-register-link>Register</a>
-      </article>
-
-      <article class="fee reveal">
-        <p class="fee-tag">Tier three</p>
-        <h3>Registration and accommodation</h3>
-        <p class="fee-price"><span class="cur">NIS</span>750</p>
-        <ul class="fee-list">
-          <li>Everything in tier one</li>
-          <li>Three nights at the Millennium Hotel</li>
-          <li>Breakfast and dinner throughout</li>
-          <li>Transfers between hotel and venue</li>
-          <li>Priority committee allocation</li>
-        </ul>
-        <p class="fee-fine">Best if you are travelling in. Rooms are allocated in order of
-          payment, so early beats late.</p>
-        <a class="btn btn-ghost full" href="#contact" data-register-link>Register</a>
-      </article>
-    </div>
-
-    <p class="fee-deadline reveal">
-      <span class="lab">Applications close</span>
-      <b data-deadline>22 October 2026</b>
-    </p>
-
-    <p class="chair-cta reveal">
-      Not applying as a delegate? The dais is recruiting too.
-      <a href="#" data-chair-link>Apply to chair a committee.</a>
-    </p>
-
-    <div class="fee-steps reveal">
-      <p class="fee-steps-h">How it works</p>
-      <ol>
-        <li><span>1</span>Submit the delegate form with your committee and country preferences.</li>
-        <li><span>2</span>Receive your allocation and payment details from the Secretariat.</li>
-        <li><span>3</span>Confirm payment to lock your seat, then get your study guide.</li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SPONSORS ═════════════════════════════════════════════════════ -->
+<!-- ══ HOST ═══════════════════════════════════════════════════════ -->
 <section class="sec sec-parchment" id="partners">
   <div class="wrap">
-    <p class="kicker reveal">VIII <i>·</i> Partners</p>
+    <p class="kicker reveal">VII <i>·</i> Our Host</p>
     <h2 class="sec-title reveal">Backing the room.</h2>
-    <p class="sec-lead reveal">archonMUN keeps delegate fees low so the floor stays open to people
-      who would otherwise be priced out of it. Our partners are the reason that works.</p>
-
-    <div class="tier reveal" data-tier="gold">
-      <div class="tier-head">
-        <h3><span class="tier-dot"></span>Gold partners</h3>
-        <p>Headline placement across the conference, the plenary hall, and every delegate handbook.</p>
-      </div>
-      <div class="tier-slots">
-        <div class="slot"><span>Available</span></div>
-        <div class="slot"><span>Available</span></div>
-        <div class="slot"><span>Available</span></div>
-      </div>
-    </div>
-
-    <div class="tier reveal" data-tier="silver">
-      <div class="tier-head">
-        <h3><span class="tier-dot"></span>Silver partners</h3>
-        <p>Named recognition in committee rooms, on the website, and in the closing ceremony.</p>
-      </div>
-      <div class="tier-slots">
-        <div class="slot"><span>Available</span></div>
-        <div class="slot"><span>Available</span></div>
-        <div class="slot"><span>Available</span></div>
-        <div class="slot"><span>Available</span></div>
-      </div>
-    </div>
+    <p class="sec-lead reveal">archonMUN keeps delegate costs low so the floor stays open to
+      people who would otherwise be priced out of it. That is possible because of the
+      organisation standing behind the conference.</p>
 
     <div class="umbrella reveal">
       <div class="umbrella-mark">
@@ -557,20 +457,17 @@
         <p class="panel-h">With thanks to</p>
         <h3>Bank Al Quds</h3>
         <p>archonMUN's umbrella organisation and host. Bank Al Quds gives the conference its
-          home in Al Masyoun and makes the whole weekend possible. This is not a sponsorship
-          tile; without them there is no conference to sponsor.</p>
+          home in Al Masyoun and makes the whole weekend possible. Every committee sits in
+          their building across the three days.</p>
       </div>
     </div>
-
-    <p class="tier-cta reveal">Interested in the Gold or Silver package?
-      <a href="#contact">Talk to the Secretariat.</a></p>
   </div>
 </section>
 
 <!-- ══ FAQ ══════════════════════════════════════════════════════════ -->
 <section class="sec sec-parchment pad-top-0" id="faq">
   <div class="wrap wrap-narrow">
-    <p class="kicker reveal">IX <i>·</i> Questions</p>
+    <p class="kicker reveal">VIII <i>·</i> Questions</p>
     <h2 class="sec-title reveal">Before you apply.</h2>
     <div class="faq" id="faqList"></div>
   </div>
@@ -601,10 +498,10 @@
       <div class="foot-col">
         <p class="foot-h">Delegates</p>
         <ul>
-          <li><a href="#register" data-register-link>Fees and registration</a></li>
+          <li><a href="#" data-register-link>Delegate application</a></li>
           <li><a href="#" data-chair-link>Chair application</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#partners">Partnership</a></li>
+          <li><a href="#partners">Our host</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -638,6 +535,6 @@
 </footer>
 
 <script src="js/team-data.js?v=4"></script>
-<script src="js/main.js?v=19"></script>
+<script src="js/main.js?v=20"></script>
 </body>
 </html>

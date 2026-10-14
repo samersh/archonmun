@@ -219,13 +219,11 @@ const FAQ = [
     a: 'The registration form asks for three committee preferences and three country preferences. ' +
        'Allocations are made by the Secretariat with an eye to experience level and to balance in ' +
        'the room, then confirmed by email along with your study guide.' },
-  { q: 'What does the fee actually cover?',
-    a: 'All three tiers cover the same conference: every committee session at Bank Al Quds, the ' +
-       'opening and closing ceremonies at Baladiat Ramallah, the delegate handbook and study ' +
-       'guides, lunch and refreshments on session days, the social event, and certification. ' +
-       'What changes is how you get there and where you sleep. 300 NIS is the conference alone. ' +
-       '450 NIS adds daily round trip transport to the venue. 750 NIS adds three nights at the ' +
-       'Millennium Hotel.' },
+  { q: 'What does registration cover?',
+    a: 'Every committee session at Bank Al Quds, the opening and closing ceremonies at Baladiat ' +
+       'Ramallah, the delegate handbook and study guides, lunch and refreshments on session ' +
+       'days, the social event, and certification. Options for transport from Jerusalem and for ' +
+       'accommodation at the Millennium Hotel are set out in the application form.' },
   { q: 'Can I come with my school or a delegation?',
     a: 'Yes. Delegations of six or more are handled as a group: one point of contact, one ' +
        'invoice, and allocations spread across committees so your delegates are not all arguing ' +
@@ -248,8 +246,8 @@ const FAQ = [
        'eligible to debate but not to win.' },
   { q: 'Is there financial support available?',
     a: 'A limited number of partial waivers are set aside each year for delegates who would ' +
-       'otherwise be priced out of the room. Keeping that fund alive is the point of our Gold and ' +
-       'Silver partnerships. Write to the Secretariat with a short note about your situation.' }
+       'otherwise be priced out of the room. Write to the Secretariat with a short note about ' +
+       'your situation.' }
 ];
 
 /* ══════════════════════════════════════════════════════════════════════

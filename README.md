@@ -35,7 +35,7 @@ All dates and venue names live in one place: the `CONFIG` block at the top of
 | `dates` | `5 to 7 November 2026` | Confirmed. |
 | `deadline` | `22 October 2026` | Confirmed. |
 | `city` / `venue` | Ramallah / Bank Al Quds, Al Masyoun | Confirmed. |
-| `register` | Google Form | Confirmed. Delegate application; all six Register buttons. |
+| `register` | Google Form | Confirmed. Delegate application; every Register button. |
 | `chair` | Google Form | Confirmed. Separate chair application. |
 | `email` | `archonmun@gmail.com` | Confirmed. |
 | `social` | Instagram `@archonmun` | Confirmed. A platform with no URL is dropped from the footer rather than left dead, so removing one is a one-line edit. |
@@ -158,17 +158,21 @@ of `index.html`. Committee
 `level` must be `beginner`, `intermediate`, or `advanced`, which is what the
 filter chips read.
 
-## Partners
+## Our host
 
-Gold and Silver are the only two tiers, with Gold placed above and given
-larger tiles and a gold-bordered frame, as the guide asks. Empty slots read
-"Available". To add a partner, replace a `.slot` div in `index.html`:
+The Registration section and the Gold and Silver sponsor tiers were removed at
+the Secretariat's request. What was the Partners section is now a single
+credit to Bank Al Quds as umbrella organisation and venue host, which the
+brief asked for. They are also credited in the footer of every page and named
+in the Venue section.
 
-```html
-<div class="slot"><img src="assets/partners/name.svg" alt="Partner name"></div>
-```
+No fee amounts appear anywhere on the site any more. Registration runs
+entirely through the delegate form, which every Register button opens, and
+the chair application sits at the end of the Committees section and in the
+footer. The 22 October deadline survives in the At a glance strip.
 
-Delete any slots you do not need. The grid reflows on its own.
+If prices come back, they belong in a new section rather than scattered
+through the FAQ, so there is one place to keep correct.
 
 ## Design notes
 

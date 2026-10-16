@@ -52,6 +52,27 @@
     }, { rootMargin: '120px' }).observe(el);
   }
 
+  /* Size from the canvas's own client box, never from the host.
+     Two separate bugs came from measuring the host: the hero stretched a
+     square buffer into a 188x221 box, and the rail sized itself from a
+     host 64px taller than its canvas, because the label sits in reserved
+     padding. Either way a circle stops being a circle. A ResizeObserver
+     on the canvas itself keeps it honest through every layout change. */
+  function autoSize(renderer, camera) {
+    const el = renderer.domElement;
+    const fit = () => {
+      const w = el.clientWidth, h = el.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    };
+    fit();
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(el);
+    else addEventListener('resize', fit, { passive: true });
+    return fit;
+  }
+
   /* A medallion: a flat face, a mirrored reverse, and a metal rim.
      Built from a circle rather than a cylinder's end cap on purpose. The
      cap's UVs do not map a disc the way a coin face needs, so the artwork
@@ -112,6 +133,7 @@
     const camera = new THREE.PerspectiveCamera(32, 1, .1, 60);
     camera.position.set(0, 0, 9.2);
 
+
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputEncoding = THREE.sRGBEncoding;
@@ -129,14 +151,7 @@
       host.classList.add('is-live');
     });
 
-    const size = () => {
-      const r = host.getBoundingClientRect();
-      const d = Math.max(1, Math.min(r.width, r.height));
-      renderer.setSize(d, d, false);
-      camera.aspect = 1; camera.updateProjectionMatrix();
-    };
-    size();
-    addEventListener('resize', size, { passive: true });
+    autoSize(renderer, camera);
 
     // the medallion leans toward the pointer, and keeps turning without one
     let px = 0, py = 0;
@@ -192,14 +207,7 @@
       return { pivot, holder, i, name: s.name, level: s.level };
     });
 
-    const size = () => {
-      const r = host.getBoundingClientRect();
-      renderer.setSize(r.width, r.height, false);
-      camera.aspect = r.width / Math.max(r.height, 1);
-      camera.updateProjectionMatrix();
-    };
-    size();
-    addEventListener('resize', size, { passive: true });
+    autoSize(renderer, camera);
 
     /* The rail advances as it crosses the viewport, not as the whole
        section scrolls: the renderer parks once the rail is off screen, so
